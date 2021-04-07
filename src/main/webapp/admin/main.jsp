@@ -7,14 +7,16 @@
 <c:if test="${id eq null }">
 	<c:redirect url="loginForm.jsp"></c:redirect>
 </c:if>
+
+
 <!DOCTYPE html>
 <html>
 
 <head>
 <meta charset="UTF-8">
 <title>관리자 페이지</title>
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/listBtn.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/listBtn.css">
 </head>
 <body>
 	<h3>${id }로 로그인 하셨습니다.</h3>

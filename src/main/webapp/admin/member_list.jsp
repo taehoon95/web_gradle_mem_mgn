@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>    
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>회원 목록</title>
-<link rel="stylesheet" href="css/list.css">
-<link rel="stylesheet" href="css/table.css">
+<link rel="stylesheet" href="../css/list.css">
+<link rel="stylesheet" href="../css/table.css">
 </head>
 <body>
 		<table border="1">

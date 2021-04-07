@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import web_gradle_mem_mgn.dto.Member;
 import web_gradle_mem_mgn.service.MemberService;
@@ -18,15 +19,21 @@ public class LoginProcess extends HttpServlet {
 	private MemberService service = new MemberService();
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpServletRequest  httpRequest = (HttpServletRequest) request;
+		
 		String id = request.getParameter("id");
 		String passwd = request.getParameter("pass");
 		
 		Member member = service.loginMember(new Member(id,passwd));
-		System.out.println(member);
 		request.getSession().setAttribute("member", member);
 		
+		
+		
 		if(member !=null){
-			request.getRequestDispatcher("admin/main.jsp").forward(request, response);
+			System.out.println(member);
+			System.out.println(httpRequest.getContextPath());
+			((HttpServletResponse)response).sendRedirect(httpRequest.getContextPath()+"/admin/main.jsp");
+//			request.getRequestDispatcher(httpRequest.getContextPath()+"/admin/main.jsp").forward(request, response);
 		}else {
 			request.getRequestDispatcher("loginForm.jsp").forward(request, response);
 		}

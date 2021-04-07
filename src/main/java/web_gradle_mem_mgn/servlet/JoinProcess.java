@@ -29,7 +29,7 @@ public class JoinProcess extends HttpServlet {
 		Member member = new Member(id, passwd, name, age, gender, email);
 		int res = service.joinMember(member);
 
-		Member m = (Member) request.getAttribute("id");
+		Member m = (Member) request.getSession().getAttribute("member");
 		
 		if (m == null) {
 				if (res == 1) {
@@ -37,8 +37,8 @@ public class JoinProcess extends HttpServlet {
 				} else {
 					request.getRequestDispatcher("JoinForm.jsp").forward(request, response);
 				}
-			}else if (request.getAttribute("id").equals("admin")) {
-			request.getRequestDispatcher("memberList").forward(request, response);
+			}else if (m.getId().contentEquals("admin")) {
+			request.getRequestDispatcher("MemListServlet").forward(request, response);
 		}
 	}
 
